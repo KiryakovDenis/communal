@@ -7,6 +7,35 @@
 
 {% block content %}
 
-    <h1>Справочник платежных периодов</h1>
+    {%if period_list%}    
+    <div class="container">
+        <div class="row pb-3">
+            <div class="col"><h1>Справочник платежных периодов</h1></div>
+        </div>
+        <div class="row"></div>
+        <div class="row">            
+            <div class="col"> 
+                <table class="table">
+                    <tHead class="thead-light">            
+                        <th scope="col">Наименование</th>
+                        <th scope="col">Дата начала</th>
+                        <th scope="col">Дата окончания</th>                        
+                    </tHead>
+                    <tbody>            
+                        {% for period in period_list %}            
+                        <tr>                
+                            <td scope="row">{{period.name}}</td>
+                            <td scope="row">{{period.begin_d}}</td>
+                            <td scope="row">{{period.end_d}}</td>                            
+                        </tr>
+                        {%endfor%}
+                    </tbody>            
+                </table>
+            </div>
+        </div>
+    </div>    
+    {%else%}
+    <p>Данные не найдены</p>
+    {%endif%}
 
 {% endblock %}

@@ -9,8 +9,8 @@ class Period(models.Model):
     class Meta:
         ordering = ["-begin_d"]
  
-    def get_absolute_url(self):
-        return reverse('model-detail-view', args=[str(self.id)])
+#    def get_absolute_url(self):
+#        return reverse('model-detail-view', args=[str(self.id)])
     def __repr__(self):
         return 'Period(name=%r, begin_d=%r, end_d=%r)' %(self.name, self.begin_d, self.end_d)
     def __str__(self):

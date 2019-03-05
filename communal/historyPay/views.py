@@ -19,6 +19,7 @@ class PeriodList(View):
     def get(self, request):        
         period = Period.objects.all()
         return render(request, 'historyPay/PeriodList.html', {'period_list':period})
+    
 
 
 class PayList(View):

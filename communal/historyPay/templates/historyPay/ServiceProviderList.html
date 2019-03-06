@@ -6,7 +6,33 @@
 {%block SPRActive%} active {%endblock%}
 
 {% block content %}
-
-    <h1>Справочник поставщиков услуг</h1>
+    
+    <div class="container">
+        <div class="row pb-3">
+            <div class="col"><h1>Справочник поставщиков услуг</h1></div>
+        </div>
+        <div class="row"></div>        
+        <div class="row">      
+            {%if provider_list%}      
+            <div class="col"> 
+                <table class="table">
+                    <tHead class="thead-light">            
+                        <th scope="col">Наименование</th>                        
+                    </tHead>
+                    <tbody>            
+                        {% for provider in provider_list %}            
+                        <tr>                
+                            <td scope="row">{{provider.name}}</td>                            
+                        </tr>
+                        {%endfor%}
+                    </tbody>            
+                </table>
+            </div>
+            {%else%}
+            <div class="col"><p>Данные не найдены</p></div>
+            
+            {%endif%}
+        </div>        
+    </div>        
 
 {% endblock %}

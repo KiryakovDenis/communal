@@ -1,25 +1,27 @@
 {%extends "base.html"%}
+{% load static %}
 
 {%block title%} | Платежные периоды{%endblock%}
 {%block HomeActive%}{%endblock%}
 {%block PayActive%}{%endblock%}
 {%block SPRActive%} active {%endblock%}
 
-{% block content %}
-
-    {%if period_list%}    
+{% block content %}        
     <div class="container">
         <div class="row pb-3">
-            <div class="col"><h1>Справочник платежных периодов</h1></div>
+            <div class="col"><h1>Справочник рассчетных периодов</h1></div>
         </div>
         <div class="row"></div>
+        {%if period_list%}
         <div class="row">            
             <div class="col"> 
-                <table class="table">
+                <table class="table table-hover table-sm table-bordered">
+                    <caption>Справочник рассчетных периодов</caption>
                     <tHead class="thead-light">            
                         <th scope="col">Наименование</th>
                         <th scope="col">Дата начала</th>
-                        <th scope="col">Дата окончания</th>                        
+                        <th scope="col">Дата окончания</th>    
+                        <th scope="col"></th>    
                     </tHead>
                     <tbody>            
                         {% for period in period_list %}            
@@ -27,15 +29,18 @@
                             <td scope="row">{{period.name}}</td>
                             <td scope="row">{{period.begin_d}}</td>
                             <td scope="row">{{period.end_d}}</td>                            
+                            <td scope="row" class="align-self-left">
+                                <img src="{% static 'img/pencil-2x.png' %}"/>
+                                <img src="{% static 'img/x-2x.png' %}"/>                                                            
+                            </td>
                         </tr>
                         {%endfor%}
                     </tbody>            
                 </table>
             </div>
         </div>
-    </div>    
-    {%else%}
-    <p>Данные не найдены</p>
-    {%endif%}
-
+        {%else%}
+        <div class="col"><p>Данные не найдены</p></div>        
+        {%endif%}
+    </div>
 {% endblock %}

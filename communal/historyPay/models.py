@@ -20,9 +20,7 @@ class ServiceProvider(models.Model):
     name = models.CharField(max_length=50, help_text="Наименование поставщика услуг")
 
     class Meta:
-        ordering = ["name"]
-    def get_absolute_url(self):
-        return reverse('model-detail-view', args=[str(self.id)])
+        ordering = ["name"]            
     def __repr__(self):
         return 'ServiceProvider(name=%r)' % (self.name)
     def __str__(self):

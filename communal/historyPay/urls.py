@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
-urlpatterns = [    
+urlpatterns = [        
     path('PayList/', views.PayList.as_view(), name='PayList'),
+    path('PeriodList/new/', views.periodView.as_view(), name='Period'),
     path('PeriodList/', views.PeriodList.as_view(), name='PeriodList'),
     path('serviceProviderList/', views.serviceProviderList.as_view(), name='serviceProviderList'),
     path('home/', views.home.as_view(), name='HomePage'),

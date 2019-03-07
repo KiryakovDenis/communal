@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View, ListView
 from .models import Period, ServiceProvider
+from .forms import periodForm
+from django.views.generic.edit import FormView
 
 class home(View):
     def get(self, request):        
@@ -26,3 +28,10 @@ class PeriodList(View):
 class PayList(View):
     def get(self, request):        
         return render(request, 'historyPay/PayList.html', {})
+
+class periodView(FormView):                     
+    template_name = 'historyPay/periodForm.html'
+    form_class = periodForm
+    success_url = 'thanks/'
+    def form_valid(self, form):
+        return super().form_valid(form)
